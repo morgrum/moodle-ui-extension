@@ -1,0 +1,75 @@
+### Privacy Policy for SurgTech Gemini Library
+
+**Effective Date:** November 08, 2025  
+**Contact:** morgrum@gmail.com
+
+---
+
+#### 1. Overview  
+SurgTech Gemini Library (the “Application”) consists of:
+- The Moodle User Interface Chrome extension
+- The SurgTech Gemini Library desktop automation tool
+
+These tools are used solely by the owner of this computer for educational workflows involving Moodle quizzes, a personal Google Drive folder, and Google’s Gemini API. They are not distributed publicly; no other users have access.
+
+---
+
+#### 2. Information the Application Handles
+
+| Data Category | Description | Where It Resides |
+|---------------|-------------|------------------|
+| Moodle quiz/test HTML and embedded images | Saved to preserve quiz content for personal study | Local disk (`SurgTech Gemini Library` folder) and the owner’s Google Drive folder |
+| Book PDFs or other study documents | Uploaded via the desktop app for Gemini analysis | Local disk and owner’s Google Drive folder |
+| Gemini API keys & OAuth tokens | Required to authenticate with Google Drive and Google AI services | Stored locally on this computer in configuration files or Chrome storage; never transmitted elsewhere |
+
+The Application **does not collect, sell, rent, or monetize** any data. All processing occurs locally or within the owner’s personal Google Drive and Gemini accounts under existing Google privacy terms.
+
+---
+
+#### 3. Use of Data
+- To capture Moodle quiz pages for personal revision.
+- To upload study materials to the owner’s Google Drive and provide them to the Gemini API during live study sessions.
+- To chunk large files into ≤29 MB segments so the Gemini File API can process them.
+- To maintain a temporary Gemini session focused on the uploaded materials.
+
+---
+
+#### 4. Data Sharing  
+No personal data is shared with third parties beyond:
+- Google Drive API (files uploaded exclusively to the account authenticated by the owner)
+- Gemini API (files and snippets uploaded for contextual analysis during the owner’s session)
+
+Both services are governed by Google’s privacy policies. No information is sent to the developers of this Application or to any other third party.
+
+---
+
+#### 5. Storage & Security
+- Files are stored only on the owner’s local disk and Google Drive.
+- OAuth refresh tokens and API keys are stored in configuration files or Chrome extension storage on this device. Removing those files or uninstalling the extension/application clears stored credentials.
+- The Application uses HTTPS when communicating with Google services.
+
+---
+
+#### 6. User Control
+- The owner can delete saved HTML/PDF files locally or in Google Drive at any time.
+- Revoking the Google Drive OAuth grant (via https://myaccount.google.com/permissions) stops the Application from accessing Drive.
+- Removing or resetting the Gemini API key prevents further Gemini uploads.
+
+---
+
+#### 7. Children’s Privacy  
+The Application is not intended for use by anyone under 13. No personal data about children is collected.
+
+---
+
+#### 8. Changes to This Policy  
+Updates may occur as features change. The revised policy will supersede prior versions when saved with the OAuth configuration. The owner should review it periodically.
+
+---
+
+#### 9. Contact  
+Questions or requests: **morgrum@gmail.com**
+
+---
+
+By continuing to use the SurgTech Gemini Library tools, you acknowledge this policy and the limited, personal use of the data described above.
