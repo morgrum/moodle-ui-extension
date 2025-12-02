@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "Moodle User Interface Bypass",
+  "version": "1.0.0",
+  "description": "Bypasses Moodle's user input restrictions to allow right-click, ctrl keys, and other browser functionality on quiz/test pages. Works on moodle.abtech.edu and local HTML files.",
+  
+  "permissions": [
+    "activeTab"
+  ],
+  
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.moodle.abtech.edu/*",
+        "*://moodle.abtech.edu/*",
+        "file://*/*.html"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ],
+  
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}
+
