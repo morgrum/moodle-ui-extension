@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moodle UI Extension Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .test-section {
+            background: #f5f5f5;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border-left: 4px solid #007cba;
+        }
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        .warning {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+        .test-item {
+            margin: 10px 0;
+            padding: 8px;
+            background: white;
+            border-radius: 3px;
+        }
+        button {
+            background: #007cba;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #005a87;
+        }
+        .quiz-content {
+            background: #e8f4f8;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .question {
+            background: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔓 Moodle UI Extension Test Page</h1>
+    
+    <div class="test-section">
+        <h2>Extension Status</h2>
+        <div id="extension-status" class="status info">Checking extension status...</div>
+        <div id="console-output"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Functionality Tests</h2>
+        <p>Test the following features that should be re-enabled by the extension:</p>
+        
+        <div class="test-item">
+            <strong>Right-click Test:</strong> Right-click anywhere on this page - context menu should appear
+        </div>
+        
+        <div class="test-item">
+            <strong>Text Selection Test:</strong> Try to select text on this page - should work normally
+        </div>
+        
+        <div class="test-item">
+            <strong>Copy/Paste Test:</strong> Select text and try Ctrl+C, then Ctrl+V - should work
+        </div>
+        
+        <div class="test-item">
+            <strong>Keyboard Shortcuts Test:</strong> Try F12, Ctrl+Shift+I, Ctrl+U - should work
+        </div>
+        
+        <div class="test-item">
+            <strong>Drag Test:</strong> Try to drag elements - should work normally
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Quiz Simulation</h2>
+        <p>This simulates a Moodle quiz page to test the extension:</p>
+        
+        <div class="quiz-content">
+            <h3>Sample Quiz Question</h3>
+            <div class="question">
+                <p><strong>Question 1:</strong> What is the capital of France?</p>
+                <input type="radio" name="q1" value="a"> A) London<br>
+                <input type="radio" name="q1" value="b"> B) Paris<br>
+                <input type="radio" name="q1" value="c"> C) Berlin<br>
+                <input type="radio" name="q1" value="d"> D) Madrid<br>
+            </div>
+            
+            <div class="question">
+                <p><strong>Question 2:</strong> Which programming language is this test written in?</p>
+                <input type="radio" name="q2" value="a"> A) Python<br>
+                <input type="radio" name="q2" value="b"> B) JavaScript<br>
+                <input type="radio" name="q2" value="c"> C) HTML<br>
+                <input type="radio" name="q2" value="d"> D) CSS<br>
+            </div>
+            
+            <button onclick="submitQuiz()">Submit Quiz</button>
+            <button onclick="flagQuestion()">Flag Question</button>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test Controls</h2>
+        <button onclick="testRightClick()">Test Right-Click</button>
+        <button onclick="testTextSelection()">Test Text Selection</button>
+        <button onclick="testKeyboardShortcuts()">Test Keyboard Shortcuts</button>
+        <button onclick="checkExtensionStatus()">Check Extension Status</button>
+        <button onclick="clearConsole()">Clear Console</button>
+    </div>
+
+    <div class="test-section">
+        <h2>Instructions</h2>
+        <ol>
+            <li>Load this page with the Moodle UI Extension installed</li>
+            <li>Check that the extension status shows as "Active"</li>
+            <li>Test all the functionality listed above</li>
+            <li>Verify that right-click, text selection, copy/paste, and keyboard shortcuts work</li>
+            <li>Check the browser console for extension messages</li>
+        </ol>
+    </div>
+
+    <script>
+        // Test functions
+        function testRightClick() {
+            log('Testing right-click functionality...');
+            // Simulate right-click
+            const event = new MouseEvent('contextmenu', {
+                bubbles: true,
+                cancelable: true,
+                clientX: 100,
+                clientY: 100
+            });
+            document.dispatchEvent(event);
+            log('Right-click event dispatched');
+        }
+
+        function testTextSelection() {
+            log('Testing text selection...');
+            const selection = window.getSelection();
+            if (selection.toString()) {
+                log('Text selection working: "' + selection.toString() + '"');
+            } else {
+                log('No text currently selected. Try selecting some text manually.');
+            }
+        }
+
+        function testKeyboardShortcuts() {
+            log('Testing keyboard shortcuts...');
+            // Test F12
+            const f12Event = new KeyboardEvent('keydown', {
+                key: 'F12',
+                bubbles: true,
+                cancelable: true
+            });
+            document.dispatchEvent(f12Event);
+            log('F12 key event dispatched');
+        }
+
+        function checkExtensionStatus() {
+            log('Checking extension status...');
+            // Look for extension indicators
+            const statusIndicator = document.getElementById('security-bypass-indicator');
+            if (statusIndicator) {
+                log('✅ Extension status indicator found - Extension is active!');
+                updateStatus('Extension is ACTIVE and working!', 'success');
+            } else {
+                log('❌ Extension status indicator not found');
+                updateStatus('Extension status unclear - check console for messages', 'warning');
+            }
+        }
+
+        function submitQuiz() {
+            log('Quiz submission attempted');
+            alert('Quiz submission test - this should work normally with the extension');
+        }
+
+        function flagQuestion() {
+            log('Question flagging attempted');
+            alert('Question flagging test - this should work normally with the extension');
+        }
+
+        function clearConsole() {
+            document.getElementById('console-output').innerHTML = '';
+        }
+
+        function log(message) {
+            const consoleOutput = document.getElementById('console-output');
+            const timestamp = new Date().toLocaleTimeString();
+            consoleOutput.innerHTML += `<div>[${timestamp}] ${message}</div>`;
+            console.log(message);
+        }
+
+        function updateStatus(message, type) {
+            const statusElement = document.getElementById('extension-status');
+            statusElement.textContent = message;
+            statusElement.className = `status ${type}`;
+        }
+
+        // Check for extension on page load
+        window.addEventListener('load', function() {
+            log('Page loaded - checking for Moodle UI Extension...');
+            
+            // Wait a moment for extension to load
+            setTimeout(() => {
+                checkExtensionStatus();
+                
+                // Check for extension console messages
+                const originalLog = console.log;
+                console.log = function(...args) {
+                    originalLog.apply(console, args);
+                    if (args[0] && typeof args[0] === 'string' && args[0].includes('🔓')) {
+                        log('Extension message: ' + args.join(' '));
+                    }
+                };
+            }, 1000);
+        });
+
+        // Listen for extension messages
+        window.addEventListener('message', function(event) {
+            if (event.data && event.data.type === 'extension-status') {
+                log('Extension status message received: ' + event.data.message);
+            }
+        });
+    </script>
+</body>
+</html>
